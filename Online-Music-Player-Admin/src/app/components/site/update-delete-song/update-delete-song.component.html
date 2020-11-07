@@ -1,0 +1,53 @@
+<div id="wrapper">
+    <app-sidebar class="bg-own"></app-sidebar>
+    <div class="d-flex flex-column" id="content-wrapper">
+        <div id="content">
+            <div class="container">
+                <div *ngIf="allSongs.length == 0;else elseBlock">
+                    <br><br>
+                    <div class="row justify-content-center">
+                        <div class="col-sm-12">
+                            <div class="jumbotron">
+                                <h1 class="display-4">No Song is there</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br><br>
+                <ng-template #elseBlock>
+                    <br><br>
+                    <div class="row">
+                        <h3 class="col-sm-12" style="text-align: center;"><b>All Songs</b></h3>
+                    </div>
+                    <div [class]="msgClass"><h4>{{msg}}</h4></div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Song</th>
+                                    <th scope="col">Artist</th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr *ngFor="let song of allSongs">
+                                    <td>{{song["SongName"]}}</td>
+                                    <td>{{song["ArtistName"]}}</td>
+                                    <td><a class="btn btn-primary" href="/updateSong/{{song['_id']}}">Update</a>
+                                    <td>
+                                        <a (click)="delete(song['_id'],song['SongPath'],song['PosterPath'])" class="btn btn-danger" data-toggle="modal" data-target="#modal1">Delete</a>
+                                        
+                                    </td>
+                                </tr>
+                            </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</div>

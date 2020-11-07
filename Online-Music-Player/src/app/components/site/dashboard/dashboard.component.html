@@ -1,0 +1,107 @@
+<div id="wrapper">
+    <app-sidebar class="bg-own"></app-sidebar>
+    <div class="d-flex flex-column" id="content-wrapper">
+        <div id="content">
+            <br><br>
+            <div class="container">
+                <div class="row">
+                    <div style="margin-left: 10%;" class="col-sm-12"><h4><b>New Releases</b></h4></div>
+                </div>
+            </div>
+            <div class="carousel" id="songs" data-flickity='{ "groupCells": true }'>
+                <div (click)="playSong(song['SongName'],song['SongPath'],song['ArtistName'])"  *ngFor="let song of sortedSongs" class="carousel-cell">
+                    <a>
+                        <img src="../../../../assets/images/{{song['PosterPath']}}" alt="../../../../assets/images/{{song['PosterPath']}}">
+                    </a>
+                    
+                    <h5><b>{{song['SongName']}}</b></h5>
+                    <p>{{song['ArtistName']}}</p>
+                </div>
+            </div>
+            <br><br>
+            <!--All Songs  -->
+            <div class="container">
+                <div class="row">
+                    <div style="margin-left: 10%;" class="col-sm-12"><h4><b>All Songs</b></h4></div>
+                </div>
+            </div>
+            <div class="carousel" id="songs" data-flickity='{ "groupCells": true }'>
+                <div (click)="playSong(song['SongName'],song['SongPath'],song['ArtistName'])" *ngFor="let song of allSongs" class="carousel-cell">
+                    <a>
+                        <img src="../../../../assets/images/{{song['PosterPath']}}" alt="../../../../assets/images/{{song['PosterPath']}}">
+                    </a>
+                    <h5><b>{{song['SongName']}}</b></h5>
+                    <p>{{song['ArtistName']}}</p>
+                </div>
+            </div>
+
+            <br><br>
+            <!-- Artists -->
+            <div class="container">
+                <div class="row">
+                    <div style="margin-left: 10%;" class="col-sm-12"><h4><b>All Playlists</b></h4></div>
+                </div>
+            </div>
+            <div class="carousel" id="artists" data-flickity='{ "groupCells": true }'>
+                <div (click)="showPlaylist(playlist['_id'])" *ngFor="let playlist of allPlaylists" class="carousel-cell">
+                    <a>
+                        <img src="../../../../assets/images/{{playlist['PosterPath']}}">
+                    </a>
+                    <h5>{{playlist['Name']}}</h5>
+                </div>
+            </div>
+            <br><br>
+            <div class="container">
+                <div class="row">
+                    <div style="margin-left: 10%;" class="col-sm-12"><h4><b>My Playlists</b></h4></div>
+                </div>
+            </div>
+            <br>
+            <!-- Artists -->
+            <div *ngIf="allMyPlaylists.length == 0;else elseBlock">
+                <div class="container">
+                    <div class="row">
+                        <div style="margin-left: 5%;" class="col-sm-12">
+                            <h4>You havn't created any playlist</h4><br>
+                            <a href="/myPlaylist">Create your own playlist</a>
+                        </div>
+                    </div>
+                </div>
+                <br><br>
+            </div>
+            <ng-template #elseBlock>
+                <div class="carousel" id="artists" data-flickity='{ "groupCells": true }'>
+                    <div (click)="showMyPlaylist(playlist['_id'])" *ngFor="let playlist of allMyPlaylists" class="carousel-cell">
+                        <a>
+                            <img src="../../../../assets/images/{{playlist['PosterPath']}}">
+                        </a>
+                        <h5>{{playlist['Name']}}</h5>
+                    </div>
+                </div>
+                <br><br>
+            </ng-template>
+        </div>
+    </div>
+</div>
+<style>
+    .music-player{
+        opacity:1;
+        background-color: white;
+        position: fixed;
+        bottom: -100;
+        right: 0;
+        left:0;
+        width: auto;
+        box-shadow: 2px 0px 20px 0px rgba(0, 0, 0, 0.2), 16px 0px 20px 0px rgba(0, 0, 0, 0.19);
+        z-index: 1;
+    }
+    .show-to-screen{
+        bottom : 0 !important;
+    }
+</style>
+<div [class.d-none]="!hasSong" id="mplayer" class="music-player">
+    <ngx-audio-player [playlist]="msaapPlaylist" [displayTitle]="msaapDisplayTitle" [autoPlay]="true" 
+        [displayPlaylist]="msaapDisplayPlayList" [pageSizeOptions]="msaapPageSizeOptions"
+        [displayVolumeControls]="msaapDisplayVolumeControls" [disablePositionSlider]="msaapDisablePositionSlider" 
+        [expanded]="true"></ngx-audio-player>
+</div>

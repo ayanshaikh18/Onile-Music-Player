@@ -1,0 +1,70 @@
+<div id="wrapper">
+    <app-sidebar class="bg-own"></app-sidebar>
+    <div class="d-flex flex-column" id="content-wrapper">
+        <div id="content">
+            <br><br><br>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <b><h3 style="text-align: center;">{{title1}}</h3></b>
+                        <br>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="container">
+                                    <br>
+                                    <div *ngIf="hasMsg" [style.color]="color">
+                                        <b>{{msg}}</b>
+                                    </div>
+                                    <br>
+                                    <form #catagory="ngForm" (ngSubmit)="onSubmit()">
+                                        <div class="form-group">
+                                            <label for="name">Catagory name :</label>
+                                            <input [(ngModel)]="Name" [class.is-invalid]="cName.invalid && cName.touched" name="Name" #cName="ngModel" type="text" required placeholder="Enter Catagory Name" class="form-control" required id="name" name="name">
+                                            <span class="text-danger" [class.d-none]="cName.valid || cName.untouched">Name of Catagory is required.</span>
+                                        </div>
+                                        
+                                        <br>
+                                        <div class="form-group">
+                                            <button [disabled]="!catagory.valid" type="submit" class="btn btn-dark btn-lg btn-block">{{action}}</button>
+                                        </div>    
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="col-sm-6">
+                        <b><h3 style="text-align: center;">Rename/Update Catagory</h3></b>
+                        <br>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="container">
+                                    <br>
+                                    <div *ngIf="hasMsg1" [style.color]="color1">
+                                        <b>{{msg1}}</b>
+                                    </div>
+                                    <br>
+                                    <form (ngSubmit)="update(selectedC.value)">
+                                        <div class="form-group">
+                                            <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Select Catagory</label>
+                                            <select #selectedC  class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                                                <option selected value="-1">--Select Catagory--</option>
+                                                <option *ngFor="let cat of catagories" value="{{cat['_id']}}">{{cat["Name"]}}</option>
+                                            </select>
+                                        </div>    
+                                        <div class="form-group row">
+                                            <button type="submit" class="btn btn-dark btn-lg btn-block col-sm-5">Select</button>
+                                            <div class="col-sm-2"></div>
+                                            <button type="button" (click)="delete(selectedC.value)" class="btn btn-danger btn-lg btn-block col-sm-5">Delete</button>
+                                        </div> 
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br><br>
+        </div>
+    </div>
+</div>

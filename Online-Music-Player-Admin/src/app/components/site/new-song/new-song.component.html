@@ -1,0 +1,89 @@
+<div id="wrapper">
+    <app-sidebar class="bg-own"></app-sidebar>
+    <div class="d-flex flex-column" id="content-wrapper">
+        <div id="content">
+            <br>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <b><h3 style="text-align: center;">New Song</h3></b>
+                        <br>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="container">
+                                    <div class="text-success"><h4>{{msg}}</h4></div>
+                                    <form #songForm="ngForm" (ngSubmit)="onSubmit($event,selectedC.value)">
+                                        <div class="form-group">
+                                            <label for="song">Select Song : </label>
+                                            <input #song="ngModel" ngModel [class.is-invalid]="song.invalid" required accept="audio/*" (change)="fileChange($event,'song')" type="file" class="form-control-file" id="song" name="song">
+                                            <span class="text-danger" [class.d-none]="!songError">(Only .mp3 or .mpeg files)</span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="name">Song name :</label>
+                                            <input [(ngModel)]="SongName" #sname="ngModel" [class.is-invalid]="sname.invalid && sname.touched" 
+                                                type="text" class="form-control" required id="name" name="name"
+                                                placeholder="Enter Song Name">
+                                            <span [class.d-none]="sname.valid || sname.untouched" class="text-danger">Song Name is Required</span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Select Catagory</label>
+                                            <select #selectedC   class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                                                <option selected value="-1">--Select Catagory--</option>
+                                                <option *ngFor="let cat of catagories" value="{{cat['Name']}}">{{cat["Name"]}}</option>
+                                            </select>
+                                            <span [class.d-none]="!hasMsg" class="text-danger">Please Select Catagory</span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="poster">Poster for song : </label>
+                                            <input type="file" (change)="fileChange($event,'poster')" 
+                                                 class="form-control-file" id="poster">
+                                            <span class="text-danger" [class.d-none]="!posterError">(Only .jpg or .png files)</span>
+                                        </div>
+                                        <div class="form-group" id="artists">
+                                            <label for="artist-name">Artist Name :</label>
+                                            <input type="text" placeholder="Enter Artist Name" [(ngModel)]="ArtistName" #artist="ngModel" required 
+                                                [class.is-invalid]="artist.invalid && artist.touched" class="form-control" 
+                                                required id="artist-name" name="ArtistName">
+                                             <span [class.d-none]="artist.valid || artist.untouched" class="text-danger">Artist's Name is Required</span>
+                                        </div>
+                                        <br>
+                                        <div class="form-group">
+                                            <button type="submit" [disabled]="!songForm.valid" class="btn btn-dark btn-lg btn-block">Upload</button>
+                                        </div>    
+                                        <div class="form-group">
+                                            <button type="reset" class="btn btn-primary btn-lg btn-block">Reset</button>
+                                        </div>    
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- <div class="col-sm-6">
+                        <b><h3 style="text-align: center;">Update Song</h3></b>
+                        <br>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="container">
+                                    <form action="#">
+                                        <div class="form-group">
+                                            <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Select Song</label>
+                                            <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                                                <option selected value="-1">--Select Song---</option>
+                                                <option *ngFor="let song of allSongs" value="{{song['_id']}}">{{song["SongName"]}}</option>
+                                            </select>
+                                        </div>    
+                                        <div class="form-group">
+                                            <button type="button" class="btn btn-dark btn-lg btn-block">Select</button>
+                                        </div> 
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+            <br><br>
+        </div>
+    </div>
+</div>

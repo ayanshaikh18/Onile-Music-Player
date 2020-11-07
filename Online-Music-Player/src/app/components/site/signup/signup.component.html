@@ -1,0 +1,50 @@
+<app-header></app-header>
+
+<br><br>
+<div class="container" id="signup">
+    <!-- <div class="row"> -->
+        <!-- <div class="col-sm-12"> -->
+            <form method="POST" #signupForm="ngForm" (ngSubmit)="signup()">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Signup</h3>
+                    </div>
+
+                    <div class="card-body">
+                        <div name="err" class="text-danger text-center" [class.d-none]="!hasError">
+                            <b>{{errorMsg}}</b><br><br>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2" for="Email">Email:</label>
+                            <input [class.is-invalid]="EmailField.invalid && EmailField.touched" placeholder="Email" type="Email" #EmailField="ngModel" required class="form-control col-sm-10" [(ngModel)]="Email" name="Email" Id="Email" />
+                            <span class="col-sm-2"></span>
+                            <span class="text-danger col-sm-10" [class.d-none]="EmailField.valid || EmailField.untouched">Email is Required</span>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2" for="Password">Password:</label>
+                            <input minlength="6" [class.is-invalid]="pwd.invalid && pwd.touched" placeholder="Password" type="password" #pwd="ngModel" required class="form-control col-sm-10" [(ngModel)]="Password" name="Password" >
+                            <span class="col-sm-2"></span>
+                            <div *ngIf="pwd.invalid && pwd.touched">
+                                <span class="text-danger col-sm-10" *ngIf="pwd.errors.minlength">Password must be atleast of 6 digits</span>
+                                <span class="text-danger col-sm-10" *ngIf="pwd.errors.required">Password is Required</span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2" for="CPassword">Confirm Password:</label>
+                            <input minlength="6" [class.is-invalid]="cpwd.invalid && cpwd.touched" placeholder="Confirm Password" type="password" #cpwd="ngModel" required class="form-control col-sm-10" [(ngModel)]="ConfirmPassword" name="ConfirmPassword" >
+                            <span class="col-sm-2"></span>
+                            <div *ngIf="cpwd.invalid && cpwd.touched">
+                                <span class="text-danger col-sm-10" *ngIf="cpwd.errors.minlength">Password must be atleast of 6 digits</span>
+                                <span class="text-danger col-sm-10" *ngIf="cpwd.errors.required">Confirm Password is Required</span>
+                            </div>
+                        </div>
+                    </div>    
+                    <div class="card-footer right-align">
+                        <button [disabled]="!signupForm.valid" class="btn-primary" type="submit">Signup</button>
+                    </div>
+                </div>
+            </form>
+        <!-- </div> -->
+    <!-- </div> -->
+</div>
+<br><br><br>

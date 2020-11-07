@@ -1,0 +1,70 @@
+<div id="wrapper">
+    <app-sidebar class="bg-own"></app-sidebar>
+    <div class="d-flex flex-column" id="content-wrapper">
+        <div id="content">
+            <br>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12" style="text-align: center;color: red;">
+                        <h3><b>Admin Dashboard</b></h3>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-header"><h4><b>General Statistics</b></h4></div>
+                            <div class="card-body">
+                                <table class="table table-borderless">
+                                    <tr> 
+                                        <td><b>Total Songs</b></td>
+                                        <td>{{songCount}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Total Playlists</b></td>
+                                        <td>{{playListCount}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Total Catagories</b></td>
+                                        <td>{{catagoryCount}}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-header"><h4><b>Catagory wise Song Counts</b></h4></div>
+                            <div class="card-body">
+                                <table class="table table-borderless">
+                                    <tr *ngFor="let p of catagoryWiseSong.entries()">
+                                        <td><b>{{p[0]}}</b></td>
+                                        <td>{{p[1]}}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-header"><h4><b>Playlist wise Song Count</b></h4></div>
+                            <div class="card-body">
+                                <table class="table table-borderless">
+                                    <tr *ngFor="let p of playlists">
+                                        <td><b>{{p.Name}}</b></td>
+                                        <td>{{p['Songs'].length}}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6"></div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>

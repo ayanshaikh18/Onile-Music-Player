@@ -1,0 +1,59 @@
+<style>
+    @media (min-width: 700px){
+        .nav-font-own{
+            font-size: 17px;
+        }
+    }
+</style>
+
+<nav class="navbar align-items-start sidebar sidebar-dark accordion pl-0 bg-own">
+    <div class="container-fluid d-flex p-0">
+        <a class="navbar-brand shadow-lg d-flex justify-content-center align-items-center sidebar-brand m-1 ml-3" href="#">
+            <div class="sidebar-brand-icon">
+                <i class='fas fa-headphones'></i> 
+            </div>
+            <div class="sidebar-brand-text mx-3"><span>Beat Buzz</span></div>
+        </a>
+        <hr class="sidebar-divider my-1">
+        <ul class="nav navbar-nav text-light mt-0" id="accordionSidebar">
+
+            <li class="nav-item">
+                <a class="nav-link" href="/dashboard" routerLinkActive="active">
+                    <i class="fa fa-home"></i> &nbsp;
+                    <span class="nav-font-own">Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/newSong" routerLinkActive="active">
+                    <i class="fa fa-plus"></i> &nbsp;
+                    <span class="nav-font-own">New Song</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/editSong" routerLinkActive="active">
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i> &nbsp;
+                    <span class="nav-font-own">Edit Song</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/catagories" routerLinkActive="active">
+                    <i class="fa fa-home"></i> &nbsp;
+                    <span class="nav-font-own">Catagories</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/newPlaylist" routerLinkActive="active">
+                    <i class="fa fa-plus"></i> &nbsp;
+                    <span class="nav-font-own">New Playlist</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">
+                    <i class="fa fa-power-off"></i> &nbsp;
+                    <span class="nav-font-own">Logout</span>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+</nav>

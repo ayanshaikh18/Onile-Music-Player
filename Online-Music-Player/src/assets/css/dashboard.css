@@ -1,0 +1,71 @@
+img{
+    border-radius: 10px;
+}
+
+
+.carousel-cell img:hover{
+    transform: scale(0.98) translateY(5px);
+}
+
+@media (min-width: 200px) and (max-width: 500px){
+    .col-sm-12{
+        margin-left: 15%;
+    }
+    .carousel-cell{
+        padding-right: 20px !important;
+        text-align: center;
+    }
+    #songs img,#searchCarousel img{
+        height: 150px;
+        width: 150px;
+    }
+    #artists img{
+        height: 100px;
+        width: 100px;
+    }
+}
+
+@media (min-width: 501px) and (max-width: 700px){
+    .col-sm-12{
+        margin-left: 10%;
+    }
+    .carousel-cell{
+        padding-right: 15px !important;
+        text-align: center;
+    }
+    #songs img,#searchCarousel img{
+        height: 130px;
+        width: 130px;
+    }
+    #artists img{
+        height: 80px;
+        width: 80px;
+    }
+}
+
+@media (min-width: 700px){
+    .carousel-cell{
+        padding: 20px !important;
+        text-align: center;
+    }
+    
+    #songs img,#searchCarousel img{
+        height: 200px;
+        width: 200px;
+    }
+
+    #artists img{
+        height: 150px;
+        width: 150px;
+    }
+}
+
+#sticky-footer {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.nav-item a{
+    font-size: 17px;
+}

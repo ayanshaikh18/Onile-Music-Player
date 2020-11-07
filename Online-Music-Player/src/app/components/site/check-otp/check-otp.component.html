@@ -1,0 +1,40 @@
+<app-header></app-header>
+
+<br><br>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <form method="POST" #form="ngForm" (ngSubmit)="submit()">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Verify OTP</h3>
+                    </div>
+
+                    <div class="card-body">
+                        <br>
+                            <h4 style="color: blue;">
+                                Verification Code has been sent to your Email-Id. 
+                                Enter it Here.
+                            </h4>
+                        <br>
+                        <div class="text-danger text-center" [class.d-none]="!hasError">
+                            <br><b>Invalid Verification Code</b><br><br>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2" for="Email">Verification Code : </label>
+                            <input [class.is-invalid]="otpField.invalid && otpField.touched" type="text" 
+                                #otpField="ngModel" required class="form-control col-sm-10" 
+                                [(ngModel)]="otp" name="otp" Id="otp" placeholder="Enter Verification code"/>
+                            <span class="col-sm-2"></span>
+                            <span class="text-danger col-sm-10" [class.d-none]="otpField.valid || otpField.untouched">Verification Code is Required</span>
+                        </div>
+                    </div>    
+                    <div class="card-footer ">
+                        <button [disabled]="!form.valid" class="btn btn-primary" type="submit">Submit verification code</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<br><br><br>

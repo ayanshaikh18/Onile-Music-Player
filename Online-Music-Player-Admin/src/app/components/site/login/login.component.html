@@ -1,0 +1,37 @@
+<br><br>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <form method="POST" #loginForm="ngForm" (ngSubmit)="login()">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Admin Login</h2>
+                    </div>
+
+                    <div class="card-body">
+                        <div *ngIf="hasMsg" class="text-danger text-center" [class.d-none]="!hasError">
+                            <b>{{msg}}</b><br><br>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2" for="Email">Email</label>
+                            <input [class.is-invalid]="EmailField.invalid && EmailField.touched" 
+                               placeholder="Enter Email" type="Email" #EmailField="ngModel" required class="form-control col-sm-10" [(ngModel)]="Email" name="Email" Id="Email" />
+                            <span class="col-sm-2"></span>
+                            <span class="text-danger col-sm-10" [class.d-none]="EmailField.valid || EmailField.untouched">Email is Required</span>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2" for="Password">Password</label>
+                            <input placeholder="Enter Password" [class.is-invalid]="pwd.invalid && pwd.touched" type="password" #pwd="ngModel" required class="form-control col-sm-10" [(ngModel)]="Password" name="Password" >
+                            <span class="col-sm-2"></span>
+                            <span class="text-danger col-sm-10" [class.d-none]="pwd.valid || pwd.untouched">Password is Required</span>
+                        </div>
+                    </div>    
+                    <div class="card-footer ">
+                        <button [disabled]="!loginForm.valid" class="btn-primary" type="submit">Login</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<br><br><br><br>

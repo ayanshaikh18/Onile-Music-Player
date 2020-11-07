@@ -1,0 +1,41 @@
+<div id="wrapper">
+    <app-sidebar class="bg-own"></app-sidebar>
+    <div class="d-flex flex-column" id="content-wrapper">
+        <div id="content">
+            <br><br>
+            <div class="container">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="container">
+                            <div [class]="msgClass">
+                                {{msg}}
+                            </div>
+                            <form #form="ngForm" (ngSubmit)="submit()">
+                                <div class="form-group">
+                                    <label for="name">Name of Playlist:</label>
+                                    <input type="text" [(ngModel)]="name" #pname="ngModel" placeholder="Enter Playlist Name" 
+                                        class="form-control" required id="name" name="name">
+                                    <span class="text-danger" [class.d-none]="pname.valid || pname.untouched">Playlist Name is required</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="poster">Choose Poster for playlist : </label>
+                                    <input type="file" (change)="fileChanged($event)" required class="form-control-file" name="poster" id="poster">
+                                    <span class="text-danger" [class.d-none]="!posterError">(only .jpg , .jpeg or .png files supported)</span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Select Songs : </label>
+                                    <select name="selectedSongs" [(ngModel)]="selectedSongs" multiple require class="custom-select my-1 mr-sm-2" size="6" id="inlineFormCustomSelectPref">
+                                        <option *ngFor="let song of allSongs" value="{{song['_id']}}">{{song['SongName']}}</option>
+                                    </select>
+                                </div>    
+                                <div class="form-group">
+                                    <button [disabled]="!form.valid" type="submit" class="btn btn-dark btn-lg btn-block">Create</button>
+                                </div>    
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
