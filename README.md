@@ -1,4 +1,4 @@
 ## Music Player
 
-# Academic project on Online Stock Management implemented using MEAN stack.
+# Academic project on Online Music Player implemented using MEAN stack.
 #year 2020-2021 
