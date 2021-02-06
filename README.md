@@ -50,7 +50,7 @@ $ ng serve -o
 
 <img src="Documents/ER_Diagram.png" height="70%" width="70%">
 
-## Built With
+## Major Technologies Used in Project
 
 * [Angular](http://angular.io/)
 * [MongoDb](https://www.mongodb.com/) 
