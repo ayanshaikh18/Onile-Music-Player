@@ -13,11 +13,6 @@ These instructions will get you a copy of the project up and running on your loc
 * mongodb
 
 
-
-```
-Give examples
-```
-
 ### How To run
 
 * #### Install Node.js & mongoDb
