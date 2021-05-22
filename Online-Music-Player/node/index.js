@@ -83,7 +83,7 @@ app.get('/sendMail/:email',(req,res)=>{
         service : 'gmail',
         auth : {
             user : '18ceuog004@ddu.ac.in',
-            pass : 'Ayan786@'
+            pass : '****'
         }
     })
     var mailOptions = {
